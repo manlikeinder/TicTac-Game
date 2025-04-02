@@ -58,7 +58,7 @@ h1 {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow */
 }
 
-/* Individual cells on the board */
+/* Individual cells on the boards */
 .cell {
     width: 100%;
     height: 100%;
@@ -67,8 +67,8 @@ h1 {
     align-items: center;
     font-size: 3em; /* Large font for X/O */
     font-weight: 700;
-    cursor: pointer;
-    border: 1px solid #c0d9f7; /
+    cursor: pointer; /* cursor*/
+    border: 1px solid #c0d9f7; 
     transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
     user-select: none; 
 }
