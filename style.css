@@ -1,0 +1,233 @@
+/* General body styling */
+body {
+    font-family: 'Inter', sans-serif; /* Use Inter font */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Light gray background */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    color: #333;
+}
+
+/* Main game container */
+.game-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    text-align: center;
+    max-width: 90%; /* Max width for responsiveness */
+    width: 400px; /* Fixed width for larger screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Game title */
+h1 {
+    color: #4a90e2; /* Blue color for title */
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+/* Game status display */
+#gameStatus {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #555;
+    min-height: 1.5em; /* Ensure consistent height */
+}
+
+/* Tic-Tac-Toe board grid */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns, equal width */
+    grid-template-rows: repeat(3, 1fr); /* 3 rows, equal height */
+    width: 300px; /* Fixed board size */
+    height: 300px;
+    border: 3px solid #4a90e2; /* Blue border for the board */
+    border-radius: 10px;
+    overflow: hidden; /* Hide overflow for rounded corners */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow */
+}
+
+/* Individual cells on the board */
+.cell {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em; /* Large font for X/O */
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid #c0d9f7; /* Lighter blue border between cells */
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    user-select: none; /* Prevent text selection */
+}
+
+/* Remove specific borders for a cleaner look */
+.cell:nth-child(3n) { border-right: none; }
+.cell:nth-child(3n+1) { border-left: none; }
+.cell:nth-child(n) { border-top: none; }
+.cell:nth-child(n+7) { border-bottom: none; }
+
+/* Hover effect for playable cells */
+.cell:not(.occupied):hover {
+    background-color: #e0f0ff; /* Light blue on hover */
+    transform: scale(1.02);
+}
+
+/* Styling for 'X' and 'O' marks */
+.cell.X {
+    color: #e74c3c; /* Red for X */
+}
+
+.cell.O {
+    color: #2ecc71; /* Green for O */
+}
+
+/* Button styling */
+button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: linear-gradient(145deg, #4a90e2, #357ABD); /* Blue gradient */
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    outline: none;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #357ABD, #4a90e2); /* Inverted gradient on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Message box styling (for win/draw) */
+.message-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.message-box.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.message-content {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    max-width: 80%;
+}
+
+.message-box.show .message-content {
+    transform: scale(1);
+}
+
+.message-content h2 {
+    color: #4a90e2;
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+.message-content p {
+    font-size: 1.3em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.message-content button {
+    background: linear-gradient(145deg, #2ecc71, #27ae60); /* Green gradient for close button */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    margin-top: 0; /* Override default button margin */
+}
+
+.message-content button:hover {
+    background: linear-gradient(145deg, #27ae60, #2ecc71);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .game-container {
+        padding: 20px;
+        width: 95%; /* Adjust width for smaller screens */
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    #gameStatus {
+        font-size: 1.2em;
+    }
+
+    .game-board {
+        width: 280px; /* Slightly smaller board */
+        height: 280px;
+    }
+
+    .cell {
+        font-size: 2.5em;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .message-content {
+        padding: 30px;
+    }
+
+    .message-content h2 {
+        font-size: 1.8em;
+    }
+
+    .message-content p {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 400px) {
+    .game-board {
+        width: 250px; /* Even smaller board for very small screens */
+        height: 250px;
+    }
+    .cell {
+        font-size: 2.2em;
+    }
+}
