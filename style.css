@@ -68,9 +68,9 @@ h1 {
     font-size: 3em; /* Large font for X/O */
     font-weight: 700;
     cursor: pointer;
-    border: 1px solid #c0d9f7; /* Lighter blue border between cells */
+    border: 1px solid #c0d9f7; /
     transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
-    user-select: none; /* Prevent text selection */
+    user-select: none; 
 }
 
 /* Remove specific borders for a cleaner look */
@@ -79,13 +79,12 @@ h1 {
 .cell:nth-child(n) { border-top: none; }
 .cell:nth-child(n+7) { border-bottom: none; }
 
-/* Hover effect for playable cells */
+
 .cell:not(.occupied):hover {
-    background-color: #e0f0ff; /* Light blue on hover */
-    transform: scale(1.02);
+    background-color: #e0f0ff; 
 }
 
-/* Styling for 'X' and 'O' marks */
+
 .cell.X {
     color: #e74c3c; /* Red for X */
 }
